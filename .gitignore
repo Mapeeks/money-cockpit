@@ -1,0 +1,79 @@
+# ========================
+# Rust
+# ========================
+target/
+**/*.rs.bk
+Cargo.lock
+
+# ========================
+# Tauri
+# ========================
+src-tauri/target/
+src-tauri/WixTools/
+*.app
+*.dmg
+*.deb
+*.rpm
+*.msi
+*.AppImage
+
+# ========================
+# Node / Frontend
+# ========================
+node_modules/
+dist/
+.cache/
+*.local
+
+# ========================
+# SQLite
+# ========================
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.db
+
+# ========================
+# OS
+# ========================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ========================
+# IDE — intentionally partial
+# ========================
+
+# JetBrains (Rust Rover, CLion...)
+.idea/
+
+# VSCode — NOT ignored, committed intentionally
+# .vscode/ is tracked to share formatting and indentation rules across contributors
+
+# ========================
+# Secrets & environment
+# ========================
+.env
+.env.*
+*.pem
+*.key
+secrets/
+
+# ========================
+# Logs & temp
+# ========================
+*.log
+tmp/
+temp/
