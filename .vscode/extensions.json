@@ -1,3 +1,17 @@
 {
-  "recommendations": ["tauri-apps.tauri-vscode", "rust-lang.rust-analyzer"]
+    "recommendations": [
+        // Rust
+        "rust-lang.rust-analyzer",
+
+        // TypeScript / Formatting
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+
+        // Tauri
+        "tauri-apps.tauri-vscode",
+
+        // Utilities
+        "EditorConfig.EditorConfig",
+        "usernamehw.errorlens"
+    ]
 }
