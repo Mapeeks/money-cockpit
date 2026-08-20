@@ -28,6 +28,7 @@ Thank you for your interest in contributing. Money Cockpit is open to contributi
 | `chore`       | Technical task with no functional impact (dependency update, refactor, config) |
 | `docs`        | Documentation only                                                             |
 | `security`    | Security-related concern                                                       |
+| `question`    | Further information is requested                                               |
 
 **Scope** (optional):
 
