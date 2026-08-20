@@ -1,0 +1,90 @@
+name: Release
+
+# Triggered only when a tag matching vx.y.z is pushed to main.
+# Example: git tag v1.0.0 && git push origin v1.0.0
+on:
+    push:
+        tags:
+            - "v[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+    release:
+        permissions:
+            contents: write
+
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    # macOS — Apple Silicon (M1 and above)
+                    - platform: "macos-latest"
+                      args: "--target aarch64-apple-darwin"
+
+                    # macOS — Intel
+                    - platform: "macos-latest"
+                      args: "--target x86_64-apple-darwin"
+
+                    # Linux — x64
+                    - platform: "ubuntu-22.04"
+                      args: ""
+
+                    # Windows — x64
+                    - platform: "windows-latest"
+                      args: ""
+
+        runs-on: ${{ matrix.platform }}
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            # Linux system dependencies required by WebKit / Tauri
+            - name: Install Linux dependencies
+              if: matrix.platform == 'ubuntu-22.04'
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y \
+                    libwebkit2gtk-4.1-dev \
+                    libappindicator3-dev \
+                    librsvg2-dev \
+                    patchelf \
+                    xdg-utils
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: lts/*
+                  cache: "npm"
+
+            - name: Install Rust stable
+              uses: dtolnay/rust-toolchain@stable
+              with:
+                  targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+            - name: Cache Rust build artifacts
+              uses: swatinem/rust-cache@v2
+              with:
+                  workspaces: "./src-tauri -> target"
+
+            - name: Install frontend dependencies
+              run: npm install
+
+            - name: Build and release
+              uses: tauri-apps/tauri-action@v1
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  # Tag name comes from the pushed git tag (e.g. v1.0.0)
+                  tagName: ${{ github.ref_name }}
+                  releaseName: "Money Cockpit ${{ github.ref_name }}"
+                  releaseBody: |
+                      ## What's new
+
+                      See the full changelog in [CHANGELOG.md](https://github.com/Mapeeks/money-cockpit/blob/main/CHANGELOG.md).
+
+                      ## Downloads
+
+                      Pick the installer for your OS below.
+                  releaseDraft: false
+                  prerelease: false
+                  args: ${{ matrix.args }}
