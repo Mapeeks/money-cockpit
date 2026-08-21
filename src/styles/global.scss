@@ -1,0 +1,126 @@
+@use "./tokens" as *;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 1fr 24px;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-areas:
+        "sidebar content"
+        "status-bar status-bar";
+    height: 100vh;
+    overflow: hidden;
+    font-family: var(--font-ui);
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+    background: var(--bg-base);
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+}
+
+#app {
+    display: contents;
+}
+
+#sidebar {
+    grid-area: sidebar;
+    overflow: hidden;
+}
+
+#content {
+    grid-area: content;
+    overflow-y: auto;
+    background: var(--bg-base);
+    padding: var(--space-6);
+}
+
+#status-bar {
+    grid-area: status-bar;
+    grid-column: 1 / -1;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: var(--font-ui);
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+input,
+select,
+textarea {
+    font-family: var(--font-ui);
+}
+
+.view {
+    max-width: 1200px;
+
+    &__header {
+        margin-bottom: var(--space-6);
+        padding-bottom: var(--space-4);
+        border-bottom: var(--border);
+    }
+
+    &__title {
+        font-size: var(--text-xl);
+        font-weight: var(--weight-semibold);
+        color: var(--text-primary);
+        line-height: 1.2;
+    }
+
+    &__subtitle {
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+        margin-top: var(--space-1);
+    }
+}
+
+.amount {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+}
+
+.amount--positive {
+    color: var(--positive);
+}
+
+.amount--negative {
+    color: var(--negative);
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.lucide {
+    stroke-width: 1.5px;
+    width: 20px;
+}

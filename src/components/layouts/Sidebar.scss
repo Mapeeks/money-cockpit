@@ -1,0 +1,102 @@
+.sidebar {
+    width: var(--sidebar-width);
+    min-width: var(--sidebar-width);
+    height: 100%;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        padding: var(--space-5) var(--space-4);
+        border-bottom: 1px solid var(--sidebar-border);
+    }
+    &__logo-mark {
+        color: var(--accent);
+        font-size: var(--text-lg);
+        line-height: 1;
+        width: 28px;
+        height: 28px;
+        .lucide {
+            width: 28px;
+            height: 28px;
+            stroke-width: 2;
+        }
+    }
+
+    &__logo-name {
+        color: var(--sidebar-text-active);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-semibold);
+        letter-spacing: 0.01em;
+    }
+
+    &__nav {
+        flex: 1;
+        padding: var(--space-3) var(--space-2);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        width: 100%;
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius-md);
+        color: var(--sidebar-text);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-medium);
+        transition:
+            background 0.15s,
+            color 0.15s;
+        text-align: left;
+        &:hover {
+            background: var(--sidebar-hover);
+            color: var(--sidebar-text-active);
+        }
+
+        &--active {
+            background: var(--sidebar-active);
+            color: var(--sidebar-text-active);
+        }
+    }
+
+    &__footer {
+        padding: var(--space-2);
+        border-top: 1px solid var(--sidebar-border);
+    }
+
+    &--compact {
+        width: 52px;
+        min-width: 52px;
+        transition:
+            width 0.2s ease-out,
+            min-width 0.2s ease-out;
+
+        .sidebar__nav {
+            padding: var(--space-2) var(--space-1);
+        }
+
+        .sidebar__logo-name {
+            display: none;
+        }
+        .sidebar__item-label {
+            display: none;
+        }
+        .lucide {
+            width: 26px;
+            height: 26px;
+            flex-shrink: 0;
+            transition:
+                width 0.2s ease-out,
+                min-width 0.2s ease-out;
+        }
+    }
+}
