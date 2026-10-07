@@ -1,0 +1,102 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-5);
+    border-bottom: 1px solid var(--sidebar-border);
+    height: var(--h-4);
+    gap: var(--space-4);
+
+    &__left,
+    &__right {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+    }
+
+    .header__title {
+        color: var(--sidebar-text-active);
+        font-size: var(--text-lg);
+        font-weight: var(--weight-semibold);
+    }
+
+    .header__search {
+        position: relative;
+
+        .lucide {
+            position: absolute;
+            left: 12px;
+            width: 16px;
+            height: 16px;
+            top: 10px;
+        }
+
+        input {
+            border: none;
+            background-color: var(--bg-input);
+            border-radius: var(--space-2);
+            font-size: var(--text-md);
+            line-height: var(--text-xl);
+            padding: var(--space-2);
+            padding-left: var(--space-7);
+            padding-right: var(--space-3);
+            color: var(--sidebar-text-active);
+            width: 256px;
+
+            &:focus {
+                outline: none;
+                border: 1px solid var(--border-input-focused);
+                background-color: var(--bg-base);
+            }
+        }
+    }
+
+    .header__notifications {
+        border-radius: var(--space-2);
+        :hover {
+            background-color: var(--bg-header-btn-hover);
+        }
+
+        button {
+            border-radius: var(--space-2);
+            padding: var(--space-2);
+
+            .lucide {
+                width: 18px;
+                height: 18px;
+                line-height: 24px;
+                display: block;
+            }
+        }
+    }
+
+    .header__language {
+        border-radius: var(--space-2);
+
+        :hover {
+            background-color: var(--bg-header-btn-hover);
+        }
+
+        .header__language-btn {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            border-radius: var(--space-2);
+            padding: var(--space-2);
+
+            .lucide {
+                width: var(--space-5);
+                height: var(--space-5);
+                width: 18px;
+                height: 18px;
+                line-height: 24px;
+            }
+
+            .header__language-name {
+                display: block;
+                font-size: var(--text-md);
+                line-height: var(--space-5);
+            }
+        }
+    }
+}

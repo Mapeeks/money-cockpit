@@ -10,6 +10,10 @@ import {
     PanelLeftClose,
     PanelLeftOpen,
     PiggyBank,
+    ChartColumn,
+    Circle,
+    Download,
+    Settings,
 } from "lucide";
 import "./Sidebar.scss";
 
@@ -17,6 +21,9 @@ const NAV_ITEMS: { route: Route; label: string; icon: string }[] = [
     { route: "dashboard", label: "Dashboard", icon: "layout-dashboard" },
     { route: "accounts", label: "Accounts", icon: "landmark" },
     { route: "operations", label: "Operations", icon: "circle-euro" },
+    { route: "analytics", label: "Analytics", icon: "chart-column" },
+    { route: "import", label: "Import", icon: "download" },
+    { route: "settings", label: "Settings", icon: "settings" },
 ];
 
 function buildNavItems(): void {
@@ -65,6 +72,10 @@ export function Sidebar(): void {
             PanelLeftClose,
             PanelLeftOpen,
             PiggyBank,
+            ChartColumn,
+            Circle,
+            Download,
+            Settings,
         },
     });
 

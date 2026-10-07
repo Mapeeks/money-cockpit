@@ -1,4 +1,4 @@
-export type Route = "dashboard" | "accounts" | "operations";
+export type Route = "dashboard" | "accounts" | "operations" | "analytics";
 
 type RouteChangeCallback = (route: Route) => void;
 

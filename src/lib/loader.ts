@@ -1,5 +1,6 @@
 import sidebarTemplate from "../components/layouts/Sidebar.html?raw";
 import statusBarTemplate from "../components/layouts/StatusBar.html?raw";
+import headerTemplate from "../components/layouts/Header.html?raw";
 
 function inject(containerId: string, template: string): void {
     const container = document.getElementById(containerId);
@@ -9,4 +10,5 @@ function inject(containerId: string, template: string): void {
 export function loadLayout(): void {
     inject("sidebar", sidebarTemplate);
     inject("status-bar", statusBarTemplate);
+    inject("header", headerTemplate);
 }
